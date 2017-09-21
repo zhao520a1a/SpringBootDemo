@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.StrategyUserMapper">
+
+	
+	<select id="selectAll" resultType="com.example.demo.dao.StrategyUserMapper">
+		 SELECT * FROM strategy_user su
+		 WHERE create_time  &gt;= #{start_time}
+		    and create_time &lt; #{end_time}
+		    and (su.push_way_cd not in ('03'))
+		    and (key_point_cd not in ('0150','0250','0350','0450','0550'))
+	</select>
+
+	<select id="selectAllByDateRange" resultType="com.example.demo.dao.StrategyUserMapper">
+		SELECT * FROM strategy_user su
+		WHERE create_time &gt;= #{start_time}
+		and create_time &lt; #{end_time}
+		and (su.push_way_cd not in ('03'))
+		and (key_point_cd not in ('0150','0250','0350','0450','0550'))
+	</select>
+
+<!--
+	<insert id="insertRh_to_src_new_user_status_chg" parameterType="map">
+		insert into
+		rh_to_src_new_user_status_chg(user_phone,is_alr_call,call_tm,rsc_emp_id,cust_is_valid,cust_is_valid_reason_cd,cust_is_valid_reason_desc,passport_id,reg_tm,curr_user_role_cd,reg_chnl_cd,reg_chnl_nm,rsc_push_tm,yrd_insrt_tm,update_tm)
+		VALUES
+		(#{user_phone},#{is_alr_call},#{call_tm},#{rsc_emp_id},#{cust_is_valid},#{cust_is_valid_reason_cd},#{cust_is_valid_reason_desc},#{passport_id},#{reg_tm},#{curr_user_role_cd},#{reg_chnl_cd},#{reg_chnl_nm},#{rsc_push_tm},#{yrd_insrt_tm},#{update_tm})
+	</insert>
+
+
+	<update id="updateRh_to_src_new_user_status_chg" parameterType="map">
+		update rh_to_src_new_user_status_chg set
+		is_alr_call=#{is_alr_call},call_tm=#{call_tm},rsc_emp_id=#{rsc_emp_id},cust_is_valid=#{cust_is_valid},cust_is_valid_reason_cd=#{cust_is_valid_reason_cd},cust_is_valid_reason_desc=#{cust_is_valid_reason_desc},passport_id=#{passport_id},reg_tm=#{reg_tm},curr_user_role_cd=#{curr_user_role_cd},reg_chnl_cd=#{reg_chnl_cd},reg_chnl_nm=#{reg_chnl_nm},rsc_push_tm=#{rsc_push_tm},yrd_insrt_tm=#{yrd_insrt_tm},update_tm=#{update_tm}
+		where user_phone=#{user_phone}
+	</update>
+
+	-->
+
+
+
+
+</mapper>
