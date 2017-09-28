@@ -11,7 +11,9 @@ import lombok.ToString;
 @Builder
 @Data
 @ToString
-public class User {
+public class People {
     private String username;
     private String pwd;
+    private String create_time;
+
 }

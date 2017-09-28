@@ -1,6 +1,6 @@
 package com.example.demo.ByHand.controller;
 
-import com.example.demo.entity.User;
+import com.example.demo.entity.People;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +22,8 @@ public class WebController {
      * @return
      */
     @RequestMapping(value = "/test", method = { RequestMethod.POST, RequestMethod.GET })
-    public void test(@RequestBody User user){
-        System.out.println(user);
+    public void test(@RequestBody People people){
+        System.out.println(people);
     }
 
 

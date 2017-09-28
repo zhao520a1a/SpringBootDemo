@@ -14,9 +14,15 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
+
+/**
+ *  自定义定时任务异步执行线程池：myAsync
+ */
+
 @Configuration
 @EnableConfigurationProperties(TaskSchedulerConfiguration.TaskSchedulerProperties.class)
 public class TaskSchedulerConfiguration {
+
 	@ConfigurationProperties(prefix="task.scheduler")
 	@Data
 	public static class TaskSchedulerProperties{
@@ -27,7 +33,6 @@ public class TaskSchedulerConfiguration {
 		/**
 		 * 所有定时要执行的代码都放在一个线程池里执行,线程池的大小,默认50
 		 */
-		//private int taskPoolSize=50;
 		private int taskPoolSize=50;
 	}
 	@Autowired

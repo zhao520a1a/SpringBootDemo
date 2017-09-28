@@ -21,7 +21,7 @@ public class SendTableService {
     private static String url;
 
     /**
-     * 方案：调一次接口，发100条记录
+     * 调用服务接口：一次发送100条数据
      *
      * @param tableName
      * @param tableContent
