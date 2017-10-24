@@ -16,14 +16,14 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 
 /**
- *  自定义定时任务异步执行线程池：myAsync
+ *  定义定时任务的线程池和普通的线程池
  */
 
 @Configuration
 @EnableConfigurationProperties(TaskSchedulerConfiguration.TaskSchedulerProperties.class)
 public class TaskSchedulerConfiguration {
 
-	@ConfigurationProperties(prefix="task.scheduler")
+	@ConfigurationProperties(prefix="thread.pool")
 	@Data
 	public static class TaskSchedulerProperties{
 		/**
@@ -37,19 +37,15 @@ public class TaskSchedulerConfiguration {
 	}
 	@Autowired
 	private TaskSchedulerProperties taskSchedulerProperties;
+
+	//定义定时任务的线程池
 	@Bean
 	public TaskScheduler taskScheduler(){
 		return new ConcurrentTaskScheduler(Executors.newScheduledThreadPool(taskSchedulerProperties.getTimerPoolSize()));
 	}
-	/**
-	 * 所有定时要执行的代码的线程池
-	 * @return
-	 */
-	/*@Bean(name="TASK_EXECUTOR_SERVICE")
-	public ExecutorService buildThreadPool(){
-		return Executors.newFixedThreadPool(taskSchedulerProperties.getTaskPoolSize());
-	}*/
-	
+
+
+	//定义线程池
 	@Bean  
     public Executor myAsync() {  
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();  
