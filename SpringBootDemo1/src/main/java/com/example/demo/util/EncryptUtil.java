@@ -1,5 +1,6 @@
 package com.example.demo.util;
 
+import com.example.demo.common.Base64;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;

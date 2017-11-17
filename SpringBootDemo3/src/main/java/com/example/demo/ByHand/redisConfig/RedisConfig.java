@@ -1,4 +1,7 @@
-//package com.example.demo.ByHand.redisConfig;
+
+package com.example.demo.ByHand.redisConfig;
+
+
 //
 //import lombok.extern.slf4j.Slf4j;
 //import org.springframework.beans.factory.annotation.Value;

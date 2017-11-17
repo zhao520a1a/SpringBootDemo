@@ -1,4 +1,4 @@
-package com.example.demo.util;
+package com.example.demo.common;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

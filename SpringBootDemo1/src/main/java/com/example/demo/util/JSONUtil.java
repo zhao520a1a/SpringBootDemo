@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 
- * @author vic
- * @desc json util 
+ * Json转换工具类（用Gson包）
  */
 public class JSONUtil {
 	

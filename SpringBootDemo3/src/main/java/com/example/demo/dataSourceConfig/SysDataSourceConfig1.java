@@ -1,26 +1,47 @@
 package com.example.demo.dataSourceConfig;
 
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import javax.sql.DataSource;
+
 /*
- * 默认使用SpringBoot中内部的spring.datasource属性注入，使用 生成jdbcTemplate；
+ *
+ * 使用hikari连接池, 配置文件要使用hikari的参数命名规则
+  *
  */
-@Slf4j
 @Configuration
-@EnableAutoConfiguration  //必须要有,才能注入成功
-public class SysDataSourceConfig {
-	@Bean(name="defaultJdbcTemplate")
-	@Primary
-	public JdbcTemplate jdbcTemplate(DataSource dataSource){
-		return new JdbcTemplate(dataSource);
-//return DataSourceBuilder.create().build();
-	}
+public class SysDataSourceConfig1 {
+
+    @Bean(name = "test1DataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.test1")
+    @Primary
+    public DataSource test1DataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean
+    @Primary
+    public JdbcTemplate jdbcTemplate(DataSource dataSource){
+        return new JdbcTemplate(dataSource);
+    }
+
+
+    @Bean(name = "test2DataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.test2")
+    public DataSource test2DataSource() {
+        return DataSourceBuilder.create().build();
+    }
+
+    @Bean(name = "test2JdbcTemplate")
+    public JdbcTemplate secondJdbcTemplate(@Qualifier("test2DataSource") DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
 
 }

@@ -1,26 +1,37 @@
 package com.example.demo.dataSourceConfig;
 
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.JdbcTemplate;
-
 /*
- * 默认使用SpringBoot中内部的spring.datasource属性注入，使用 生成jdbcTemplate；
+ * 默认使用Tomcat.jdbc.pool连接池，（如果不排除它的jar，该连接池在Springboot中优先级最高,不管你是否设置了其他连接池）
  */
-@Slf4j
-@Configuration
-@EnableAutoConfiguration  //必须要有,才能注入成功
-public class SysDataSourceConfig {
-	@Bean(name="defaultJdbcTemplate")
-	@Primary
-	public JdbcTemplate jdbcTemplate(DataSource dataSource){
-		return new JdbcTemplate(dataSource);
-//return DataSourceBuilder.create().build();
-	}
-
-}
+//@Configuration
+//@EnableAutoConfiguration  //必须要有,才能注入成功
+//public class SysDataSourceConfig2 {
+//
+//	@Bean
+//	@Primary
+//	@ConfigurationProperties(prefix="spring.datasource")
+//	public DataSource primaryDataSource() {
+//		return DataSourceBuilder.create().build();
+//	}
+//
+//
+//	@Bean
+//	@Primary
+//	public JdbcTemplate jdbcTemplate(DataSource dataSource){
+//		return new JdbcTemplate(dataSource);
+//	}
+//
+//	@Bean(name = "secondDs")
+//	@ConfigurationProperties(prefix = "spring.second-datasource")
+//	public DataSource secondDs() {
+//		return DataSourceBuilder.create().build();
+//	}
+//
+//	@Bean(name = "secondJdbcTemplate")
+//	public JdbcTemplate secondJdbcTemplate(@Qualifier("secondDs") DataSource dataSource) {
+//		return new JdbcTemplate(dataSource);
+//	}
+//
+//
+//}

@@ -131,6 +131,12 @@
             <artifactId>gson</artifactId>
         </dependency>
 
+        <!-- ftp文件上传组件 -->
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.6</version>
+        </dependency>
 
         <!--热部署,还要将IDEA设置为自动编译-->
         <dependency>

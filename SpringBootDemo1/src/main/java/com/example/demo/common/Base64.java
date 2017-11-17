@@ -1,4 +1,4 @@
-package com.example.demo.util;
+package com.example.demo.common;
 
 import java.io.*;
 import java.nio.ByteBuffer;

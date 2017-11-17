@@ -47,11 +47,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 			<exclusions>
-				<!--不排除：SpringBoot会默认使用tomcat的jdbc连接（默认大小的10个连接）自定义连接池将不奏效-->
-				<exclusion>
-					<groupId>org.apache.tomcat</groupId>
-					<artifactId>tomcat-jdbc</artifactId>
-				</exclusion>
+				<!--不想使用tomcat的自带连接池，必须要排除；如果不排除：SpringBoot会默认使用tomcat的jdbc连接（默认大小的10个连接）自定义连接池将不奏效-->
+				<!--<exclusion>-->
+					<!--<groupId>org.apache.tomcat</groupId>-->
+					<!--<artifactId>tomcat-jdbc</artifactId>-->
+				<!--</exclusion>-->
 
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
@@ -76,10 +76,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.zaxxer</groupId>-->
+			<!--<artifactId>HikariCP</artifactId>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>com.alibaba</groupId>

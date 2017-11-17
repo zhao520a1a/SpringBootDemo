@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>SpringBootDemo3</name>
-	<description> Redis</description>
+	<description> Redis, 使用第三方连接池配置JdbcTemplate</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -25,6 +25,27 @@
 	</properties>
 
 	<dependencies>
+
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+			<!--重要：若不排除，在不指定数据源情况下，springboot会默认优先使用tomcat数据源,即使配置其他数据源也不好使；-->
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.tomcat</groupId>
+					<artifactId>tomcat-jdbc</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 
 		<dependency>
@@ -81,6 +102,8 @@
 			<artifactId>httpmime</artifactId>
 			<version>4.5</version>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>

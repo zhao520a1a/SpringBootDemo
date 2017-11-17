@@ -1,4 +1,4 @@
-package com.example.demo.datasourceconfig;
+package com.example.demo;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
